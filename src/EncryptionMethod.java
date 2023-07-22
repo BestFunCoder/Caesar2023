@@ -1,13 +1,12 @@
-import java.util.Scanner;
+/*import java.util.Scanner;
 
-public class EncryptionMethod {
-    //private static final String =
-    //private static final String =
-    private static final String METHOD_BRUTEFORCE = "\nВи обрали метод Brute Force.\n";
-    private static final String METHOD_WITH_KEY = "\nВи обрали метод з вибором ключа.\n";
-    private static final String EXIT_MINE_MENU = "\nВи обрали вихід в головне меню програми.\n";
-    private static final String  ERROR_SELECT = "\nВи зробили помилковий вибір, спробуйте ще раз.\n";
-    private static final String EXIT_SELECT = "\nВи обрали вихід з програми. Допобачення!";
+public class EncryptionMethod extends ChoiceOfAction {
+
+    private static final String METHOD_BRUTEFORCE = "\n- Ви обрали метод з вибором ключа. -\n";
+    private static final String METHOD_WITH_KEY = "\n- Ви обрали метод Brute Force. -\n";
+    private static final String EXIT_MINE_MENU = "\n- Ви обрали вихід в головне меню програми. -\n";
+    private static final String  ERROR_SELECT = "\n- Ви зробили помилковий вибір, спробуйте ще раз. -\n";
+    private static final String EXIT_SELECT = "\n- Ви обрали вихід з програми. Допобачення!" -;
 
     public int selectEncryptionMethod() {
         System.out.println("""
@@ -15,8 +14,8 @@ public class EncryptionMethod {
                 ( для цього введіть відповідну цифру і натисніть Enter )
                 """);
         System.out.println("""
-                1 - Метод Brute Force.
-                2 - Метод з вибором ключа.
+                1 - Метод з вибором ключа.
+                2 - Метод Brute Force.
                 3 - Вихід в головне меню.
                 4 - Вихід з програми.""");
 
@@ -37,4 +36,4 @@ public class EncryptionMethod {
         }
         return encryptMeth;
     }
-}
+}*/

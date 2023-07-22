@@ -1,4 +1,4 @@
-public class ChoiceOfOperation extends ChoiceOfAction {
+/*public class ChoiceOfOperation extends ChoiceOfAction {
     public final String MENU_ITEMS = """
             1 - Шифрування.
             2 - Розшифровування.
@@ -30,4 +30,4 @@ public class ChoiceOfOperation extends ChoiceOfAction {
         System.out.println(SELECTION_POSITION_4);
         System.exit(0);
     }
-}
+}*/
