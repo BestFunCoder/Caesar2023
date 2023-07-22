@@ -17,8 +17,7 @@ public class DecryptionMethod extends  ChoiceOfAction {
             3 - Вихід в головне меню.
             4 - Вихід з програми.
             """;
-
-    ArrayList<Character> decryptionFileForWrite;
+    ArrayList<Character> decryptionFile;
 
     @Override
     public String getMenuItems() {
@@ -40,21 +39,10 @@ public class DecryptionMethod extends  ChoiceOfAction {
     @Override
     public void getSelectionPosition2() {
         System.out.println(METHOD_BRUTEFORCE);
-        /*Key1 key1 = new Key1();
-        DecryptionProcess decryptProcessKey1 = new DecryptionProcess();
-        Menu.decryptionFile = decryptProcessKey1.decryptionRun(key1.getINT_KEY());
-
-        Key2 key2 = new Key2();
-        DecryptionProcess decryptProcessKey2 = new DecryptionProcess();
-        Menu.decryptionFile = decryptProcess.decryptionRun(key2.getINT_KEY());
-
-        Key3 key3 = new Key3();
-        DecryptionProcess decryptProcess = new DecryptionProcess();
-        Menu.decryptionFile = decryptProcess.decryptionRun(key3.getINT_KEY());*/
         bruteKey1();
         bruteKey2();
         bruteKey3();
-
+       new EndMenu().operationSelection();
     }
 
     @Override
@@ -70,26 +58,26 @@ public class DecryptionMethod extends  ChoiceOfAction {
     public void bruteKey1(){
         Key1 key1 = new Key1();
         DecryptionProcess decryptProcess = new DecryptionProcess();
-        SeparateCodeKey separateCodeKey = new SeparateCodeKey();
-        decryptionFileForWrite = separateCodeKey.separate(decryptProcess.decryptionRun(key1.getINT_KEY()));
-        BruteForceKeyDetermination bruteForceKeyDetermination = new BruteForceKeyDetermination();
-        bruteForceKeyDetermination.determinationKey(decryptionFileForWrite);
+        decryptionFile = decryptProcess.decryptionRun(key1.getINT_KEY());
+
+        BruteForceKeyDetermination bruteForceKeyDetermination = new BruteForceKeyDetermination(decryptionFile);
+        bruteForceKeyDetermination.determinationKey();
     }
     public  void bruteKey2(){
         Key2 key2 = new Key2();
         DecryptionProcess decryptProcess = new DecryptionProcess();
-        SeparateCodeKey separateCodeKey = new SeparateCodeKey();
-        decryptionFileForWrite = separateCodeKey.separate(decryptProcess.decryptionRun(key2.getINT_KEY()));
-        BruteForceKeyDetermination bruteForceKeyDetermination = new BruteForceKeyDetermination();
-        bruteForceKeyDetermination.determinationKey(decryptionFileForWrite);
+        decryptionFile = decryptProcess.decryptionRun(key2.getINT_KEY());
+
+        BruteForceKeyDetermination bruteForceKeyDetermination = new BruteForceKeyDetermination(decryptionFile);
+        bruteForceKeyDetermination.determinationKey();
     }
 
     public void bruteKey3(){
         Key3 key3 = new Key3();
         DecryptionProcess decryptProcess = new DecryptionProcess();
-        SeparateCodeKey separateCodeKey = new SeparateCodeKey();
-        decryptionFileForWrite = separateCodeKey.separate(decryptProcess.decryptionRun(key3.getINT_KEY()));
-        BruteForceKeyDetermination bruteForceKeyDetermination = new BruteForceKeyDetermination();
-        bruteForceKeyDetermination.determinationKey(decryptionFileForWrite);
+        decryptionFile = decryptProcess.decryptionRun(key3.getINT_KEY());
+
+        BruteForceKeyDetermination bruteForceKeyDetermination = new BruteForceKeyDetermination(decryptionFile);
+        bruteForceKeyDetermination.determinationKey();
     }
 }
