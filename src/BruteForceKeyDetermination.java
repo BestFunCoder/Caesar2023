@@ -3,36 +3,31 @@ import java.util.Arrays;
 
 public class BruteForceKeyDetermination {
     private final ArrayList<Character> CONSTANT_CODE_KEY = new ArrayList<>(Arrays.asList('А', 'Б', 'В'));
-    private final String KEY_FOUND = "- Ключ знайдено -";
+    private final String KEY_FOUND = "- Ключ знайдено." +
+            " -";
     private final String KEY_NOT_FOUND = "- Вірного ключа не знайдено. -";
 
 
-    ArrayList<Character> codeKey;
-
-    //Keys key1 = new Key1();
-    //Keys key2 = new Key2();
-    //Keys key3 = new Key3();
-
-    private SeparateCodeKey separateCodeKey = new SeparateCodeKey();
-    ArrayList<Character> decryptionFileFreeCodeKey = separateCodeKey.getDecryptionFileFreeCodeKey();
-    ArrayList<Character> separateKeyCode;
+    private ArrayList<Character> codeKey;
+    private ArrayList<Character> decryptionFile;
     private ArrayList<Character> decryptionFileForWrite;
-    public BruteForceKeyDetermination(){}
-    public BruteForceKeyDetermination(ArrayList<Character> separateKeyCode){
-        this.separateKeyCode = separateKeyCode;
+
+    public BruteForceKeyDetermination(ArrayList<Character> decryptionFile){
+      this.decryptionFile = decryptionFile;
     }
 
-    public void determinationKey(ArrayList<Character> decryptionFileForWrite){
-        separateCodeKey.getSeparateKeyCode();
-        separateCodeKey.getDecryptionFileFreeCodeKey();
+    public void determinationKey(){
+        SeparateCodeKey separateCodeKey = new SeparateCodeKey();
+        decryptionFileForWrite = separateCodeKey.separate(decryptionFile);
+        codeKey = separateCodeKey.getSeparateKeyCode();
 
-        if(CONSTANT_CODE_KEY.equals(separateKeyCode)){
+        if(CONSTANT_CODE_KEY.equals(codeKey)){
             System.out.println(KEY_FOUND);
             WriteFileDecryption writeFileDecryption = new WriteFileDecryption(decryptionFileForWrite);
             writeFileDecryption.write();
+            new EndMenu().operationSelection();
         } else {
             System.out.println(KEY_NOT_FOUND);
         }
-
     }
 }
