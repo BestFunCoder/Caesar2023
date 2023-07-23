@@ -10,13 +10,15 @@ public class Menu {
 
     public void starting() {
         // Вибір операції - шифрування або розшифрування
-        operationSelect = new Operation().operationSelection();
+        /*operationSelect = new Operation().operationSelection();
         switch (operationSelect) {
             case 1 -> encryptRun();
             case 2 -> decryptRun();
             case 3 -> starting();
             case 4 -> System.exit(0);
-        }
+        }*/
+        ChoiceOfOperation choiceOfOperation = new ChoiceOfOperation();
+        choiceOfOperation.operationSelection();
     }
 
     public void encryptRun() {
