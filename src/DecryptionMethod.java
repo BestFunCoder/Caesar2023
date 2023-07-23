@@ -17,6 +17,7 @@ public class DecryptionMethod extends  ChoiceOfAction {
             3 - Вихід в головне меню.
             4 - Вихід з програми.
             """;
+    private final String KEY_NOT_FOUND = "- Відповідного ключа не знайдено. -";
     ArrayList<Character> decryptionFile;
 
     @Override
@@ -42,7 +43,8 @@ public class DecryptionMethod extends  ChoiceOfAction {
         bruteKey1();
         bruteKey2();
         bruteKey3();
-       new EndMenu().operationSelection();
+        System.out.println(KEY_NOT_FOUND);
+        new EndMenu().operationSelection();
     }
 
     @Override
