@@ -9,7 +9,9 @@ public class ReadFile {
 
     private final String SELECTION_ERROR = "\n- Ви ввели недійсний шлях до файлу. -\n" +
             "1 - Ввести адресу ще раз.\n" +
-            "2 - Вийти в головне меню.\n";
+            "2 - Вийти в головне меню.";
+    private final int MENU_ITEM1 = 1;
+    private final int MENU_ITEM2 = 2;
     private final String PROMPT_TO_SELECT_FILE = "- Даний файл наявний та має правильне розширення. -";
     private final String ENTER_TO_FILE_PATCH = "= Введіть шлях до файлу (розширення .txt): =";
     private final String NOTHING_ENTERED = "- Ви впевненні, що поле введення не пусте? -";
@@ -47,17 +49,21 @@ public class ReadFile {
             }
         }
         else {
-            System.out.println(SELECTION_ERROR);
-            Scanner scanner = new Scanner(System.in);
-            if (scanner.hasNextInt()){
-                int i = scanner.nextInt();
-                if(i == 1){
-                    readFileToChar();
-                } else if (i == 2) {
-                    new Menu().starting();
-                }
-            }
+            menuEnteredIncorrectly();
         }
         return arrayCharSourceFile;
+    }
+    public void menuEnteredIncorrectly(){
+        System.out.println(SELECTION_ERROR);
+        Scanner scanner = new Scanner(System.in);
+        int i=1;
+        if (scanner.hasNextInt()){
+            i = scanner.nextInt();
+        }
+        switch (i) {
+            case MENU_ITEM1 -> readFileToChar();
+            case MENU_ITEM2 -> new Menu().starting();
+            default -> menuEnteredIncorrectly();
+        }
     }
 }
