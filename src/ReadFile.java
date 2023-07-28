@@ -5,37 +5,28 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 public class ReadFile {
 
-    private final String SELECTION_ERROR = "\n- Ви ввели недійсний шлях до файлу. -\n" +
-            "1 - Ввести адресу ще раз.\n" +
-            "2 - Вийти в головне меню.";
     private final int MENU_ITEM1 = 1;
     private final int MENU_ITEM2 = 2;
-    private final String PROMPT_TO_SELECT_FILE = "- Даний файл наявний та має правильне розширення. -";
-    private final String ENTER_TO_FILE_PATCH = "= Введіть шлях до файлу (розширення .txt): =";
-    private final String NOTHING_ENTERED = "- Ви впевненні, що поле введення не пусте? -";
     public ArrayList<Character> arrayCharSourceFile = new ArrayList<>();
-
-
 
     public ArrayList<Character> readFileToChar() {
         Path path = null;
-        while(path == null) {
-            System.out.println(ENTER_TO_FILE_PATCH);
+        while (path == null) {
+            System.out.println("= Введіть шлях до файлу (розширення .txt): =");
             Scanner scanner = new Scanner(System.in);
             if (scanner.hasNextLine()) {
                 path = Path.of(scanner.nextLine());
-
             } else {
-                System.out.println(NOTHING_ENTERED);
+                System.out.println("- Ви впевненні, що поле введення не пусте? -");
                 readFileToChar();
             }
-
         }
 
         if (Files.exists(path) && path.toString().endsWith(".txt")) {
-            System.out.println(PROMPT_TO_SELECT_FILE);
+            System.out.println("- Даний файл наявний та має правильне розширення. -");
             try (BufferedReader br = new BufferedReader(new FileReader(path.toString()))) {
                 String line;
                 while ((line = br.readLine()) != null) {
@@ -47,17 +38,20 @@ public class ReadFile {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-        else {
+        } else {
             menuEnteredIncorrectly();
         }
         return arrayCharSourceFile;
     }
-    public void menuEnteredIncorrectly(){
-        System.out.println(SELECTION_ERROR);
+
+    public void menuEnteredIncorrectly() {
+        System.out.println("""
+                - Ви ввели недійсний шлях до файлу. -
+                1 - Ввести адресу ще раз.
+                2 - Вийти в головне меню.""");
         Scanner scanner = new Scanner(System.in);
-        int i=1;
-        if (scanner.hasNextInt()){
+        int i = 0;
+        if (scanner.hasNextInt()) {
             i = scanner.nextInt();
         }
         switch (i) {
