@@ -1,18 +1,19 @@
 import java.util.ArrayList;
+
 public class EncryptionProcess {
 
-    ArrayList<Character> arrayListSourceFile;
+    ArrayList<Character> SourceFile;
     int yourShiftKey;
     int newShiftKey;
     SampleUkrainianAlphabet sampleUkrainianAlphabet = new SampleUkrainianAlphabet();
     ArrayList<Character> alphabetUAWithPunctuation = sampleUkrainianAlphabet.getAlphabetUAWithPunctuation();
     ArrayList<Character> punctuation = sampleUkrainianAlphabet.getPunctuation();
     KeySelection keySelection = new KeySelection();
-    ArrayList<Character> arrayListOutputFile = new ArrayList<>();
-    ArrayList<Character> arrayListEncryptFile = new ArrayList<>();
+    ArrayList<Character> OutputFile = new ArrayList<>();
+    ArrayList<Character> EncryptFile = new ArrayList<>();
 
-    public EncryptionProcess(ArrayList<Character> arrayListSourceFile, int yourShiftKey) {
-        this.arrayListSourceFile = arrayListSourceFile;
+    public EncryptionProcess(ArrayList<Character> SourceFile, int yourShiftKey) {
+        this.SourceFile = SourceFile;
         this.yourShiftKey = yourShiftKey;
     }
 
@@ -24,71 +25,55 @@ public class EncryptionProcess {
         } else if (yourShiftKey == keySelection.yourShiftKey3) {
             withKey3();
         }
-
-        encrypt2();
-        return arrayListEncryptFile;
+        encryption();
+        return EncryptFile;
     }
 
     private void withKey1() {
-        arrayListOutputFile.add('Г');
-        arrayListOutputFile.add('Ґ');
-        arrayListOutputFile.add('Д');
+        Key1 key1 = new Key1();
+        OutputFile.add(key1.CODE_KEY_1);
+        OutputFile.add(key1.CODE_KEY_2);
+        OutputFile.add(key1.CODE_KEY_3);
     }
 
     private void withKey2() {
-        arrayListOutputFile.add('Д');
-        arrayListOutputFile.add('Е');
-        arrayListOutputFile.add('Є');
+        Key2 key2 = new Key2();
+        OutputFile.add(key2.CODE_KEY_1);
+        OutputFile.add(key2.CODE_KEY_2);
+        OutputFile.add(key2.CODE_KEY_3);
     }
 
     private void withKey3() {
-        arrayListOutputFile.add('Є');
-        arrayListOutputFile.add('Ж');
-        arrayListOutputFile.add('З');
+        Key3 key3 = new Key3();
+        OutputFile.add(key3.CODE_KEY_1);
+        OutputFile.add(key3.CODE_KEY_2);
+        OutputFile.add(key3.CODE_KEY_3);
     }
 
-
-    public void encrypt2() {
-
-
-        for (Character ch : arrayListSourceFile) {
-            //отримуємо чар з масиву-джерела
-
-
+    public void encryption() {
+        for (Character ch : SourceFile) {
             if (punctuation.contains(ch)) {
-                //encryptionCore(ch);
-                arrayListOutputFile.add(encryptionCore(ch));
-            }
-
-            //перевірка чи чар є UpperCase
-            else if (Character.isUpperCase(ch)) {
-                arrayListOutputFile.add(encryptionCore(ch));
-
-
-                // якщо чар LowerCase
+                OutputFile.add(encryptionCore(ch));
+            } else if (Character.isUpperCase(ch)) {
+                OutputFile.add(encryptionCore(ch));
             } else if (Character.isLowerCase(ch)) {
-                // Переводимо чар в юперКейс і перевіряємо чи є в українській мові
                 char chUpperCase = Character.toUpperCase(ch);
                 char tempCh = encryptionCore(chUpperCase);
-                arrayListOutputFile.add(Character.toLowerCase(tempCh));
-
+                OutputFile.add(Character.toLowerCase(tempCh));
             }
         }
-
-        arrayListEncryptFile = arrayListOutputFile;
+        EncryptFile = OutputFile;
     }
 
     public char encryptionCore(char ch) {
-        char temp = '$';
+        char temp = ' ';
         if (alphabetUAWithPunctuation.contains(ch)) {
             int i = alphabetUAWithPunctuation.indexOf(ch);
             newShiftKey = i + yourShiftKey;
-            //зациклення для алфавіту
             if (newShiftKey > 40) {
                 newShiftKey = newShiftKey % 41;
             }
             temp = alphabetUAWithPunctuation.get(newShiftKey);
-
         }
         return temp;
     }
