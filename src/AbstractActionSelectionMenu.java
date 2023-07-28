@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public abstract class ChoiceOfAction {
+public abstract class AbstractActionSelectionMenu {
     public final int MENU_ITEM_POSITION_1 = 1;
     public final int MENU_ITEM_POSITION_2 = 2;
     public final int MENU_ITEM_POSITION_3 = 3;
@@ -10,14 +10,20 @@ public abstract class ChoiceOfAction {
             Введіть цифру та натисніть Enter: =""";
     public final String ERROR_CHOICE = "\n-Ви зробили помилковий вибір, спробуйте ще раз.-\n";
     int select;
+
     public abstract String getMenuItems();
-    public String getOfferOfChoice(){
+
+    public String getOfferOfChoice() {
         return OFFER_OF_CHOICE;
     }
-    public abstract void getSelectionPosition1();
-    public abstract void getSelectionPosition2();
-    public abstract void getSelectionPosition3();
-    public abstract void getSelectionPosition4();
+
+    public abstract void ExecutingMenuItem1();
+
+    public abstract void ExecutingMenuItem2();
+
+    public abstract void ExecutingMenuItem3();
+
+    public abstract void ExecutingMenuItem4();
 
     public void operationSelection() {
         System.out.println(getOfferOfChoice());
@@ -29,18 +35,12 @@ public abstract class ChoiceOfAction {
         }
     }
 
-    public int operationSelectionReturnInt(){
-        operationSelection();
-        positionSelection();
-        return select;
-    }
-
-    public void positionSelection(){
+    public void positionSelection() {
         switch (select) {
-            case MENU_ITEM_POSITION_1 -> getSelectionPosition1();
-            case MENU_ITEM_POSITION_2 -> getSelectionPosition2();
-            case MENU_ITEM_POSITION_3 -> getSelectionPosition3();
-            case MENU_ITEM_POSITION_4 -> getSelectionPosition4();
+            case MENU_ITEM_POSITION_1 -> ExecutingMenuItem1();
+            case MENU_ITEM_POSITION_2 -> ExecutingMenuItem2();
+            case MENU_ITEM_POSITION_3 -> ExecutingMenuItem3();
+            case MENU_ITEM_POSITION_4 -> ExecutingMenuItem4();
             default -> {
                 System.out.println(ERROR_CHOICE);
                 operationSelection();
