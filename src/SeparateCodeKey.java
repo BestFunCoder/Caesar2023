@@ -18,7 +18,7 @@ public class SeparateCodeKey {
                 decryptionFileFreeCodeKey.add(decryptionFile.get(i));
             }
         }
-        BruteForceKeyDetermination bruteForceKeyDetermination= new BruteForceKeyDetermination(separateKeyCode);
+        new BruteForceKeyDetermination(separateKeyCode);
         return decryptionFileFreeCodeKey;
     }
 }
