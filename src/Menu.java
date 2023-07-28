@@ -38,8 +38,8 @@ public class Menu {
         DecryptionProcess decryptionProcess = new DecryptionProcess();
         decryptionProcess.setArrayListEncryptFile(SourceEncryptFile);
 
-        DecryptionMethod decryptionMethod = new DecryptionMethod();
-        decryptionMethod.operationSelection();
+        DecryptionMode decryptionMode = new DecryptionMode();
+        decryptionMode.operationSelection();
 
         SeparateCodeKey separateCodeKey = new SeparateCodeKey();
         decryptionFileForWrite = separateCodeKey.separate(decryptionFile);
