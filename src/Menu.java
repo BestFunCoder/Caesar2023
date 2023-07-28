@@ -8,7 +8,7 @@ public class Menu {
     int yourShiftKey;
 
     public void starting() {
-        ChoiceOfOperation choiceOfOperation = new ChoiceOfOperation();
+        ChoiceOperationEncryptOrDecrypt choiceOfOperation = new ChoiceOperationEncryptOrDecrypt();
         choiceOfOperation.operationSelection();
     }
 
