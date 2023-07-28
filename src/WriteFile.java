@@ -12,9 +12,9 @@ public class WriteFile {
     String fullNameOutFile;
     final String DIRECTORY_TO_SAVE_FILE = "- Новий файл буде збережено до директорії - ";
     final String ENTER_NAME_FILE = """
-         = Введіть назву для шифрованого файлу =
-         ( формат файлу має мати вигляд ***.txt )
-         """;
+            = Введіть назву для шифрованого файлу =
+            ( формат файлу має мати вигляд ***.txt )
+            """;
     final String ERROR_ENTER_NAME_FILE = "- Ви зробили помилку в написанні назви файлу. Спробуйте ще раз. -";
     final String SAVED_SUCCESSFULLY = "\n- Вміст обробленого файлу було успішно збережено в файл. -";
     final String ERROR_SAVE = "\n- Виникла помилка при записі в файл. -\n";
@@ -31,35 +31,34 @@ public class WriteFile {
     public void selectDirectoryFromWrite() {
 
         Path dirForSave = Paths.get(directoryForSaveFile);
-        if(!Files.exists(dirForSave)){
+        if (!Files.exists(dirForSave)) {
             try {
                 Files.createDirectories(dirForSave);
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                System.out.println("Помилка створення такої директорії!");
             }
         }
         System.out.println(DIRECTORY_TO_SAVE_FILE + directoryForSaveFile);
         enterNameFile();
     }
-    public void enterNameFile(){
+
+    public void enterNameFile() {
         System.out.println(ENTER_NAME_FILE);
         fileName = null;
         Scanner scanner = new Scanner(System.in);
-        if(scanner.hasNextLine()) {
+        if (scanner.hasNextLine()) {
             fileName = scanner.nextLine();
             System.out.println(fileName);
-            if (fileName != null && fileName.endsWith(".txt")){
+            if (fileName != null && fileName.endsWith(".txt")) {
                 StringBuilder stringBuilder = new StringBuilder();
                 stringBuilder.append(directoryForSaveFile);
                 stringBuilder.append(fileName);
                 fullNameOutFile = stringBuilder.toString();
-                if(Files.exists(Path.of(fullNameOutFile))){
+                if (Files.exists(Path.of(fullNameOutFile))) {
                     System.out.println(FILE_NAME_EXIST);
-                    //fullNameOutFile = null;
                     enterNameFile();
                 }
-            }
-            else {
+            } else {
                 System.out.println(ERROR_ENTER_NAME_FILE);
                 enterNameFile();
             }
@@ -84,7 +83,6 @@ public class WriteFile {
 
         } catch (IOException e) {
             System.out.println(ERROR_SAVE);
-            e.printStackTrace();
         }
     }
 }
