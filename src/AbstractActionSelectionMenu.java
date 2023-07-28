@@ -5,16 +5,15 @@ public abstract class AbstractActionSelectionMenu {
     public final int MENU_ITEM_POSITION_2 = 2;
     public final int MENU_ITEM_POSITION_3 = 3;
     public final int MENU_ITEM_POSITION_4 = 4;
-    private final String OFFER_OF_CHOICE = """
-            = Виберіть необхідну дію.
-            Введіть цифру та натисніть Enter: =""";
     public final String ERROR_CHOICE = "\n-Ви зробили помилковий вибір, спробуйте ще раз.-\n";
     int select;
 
     public abstract String getMenuItems();
 
     public String getOfferOfChoice() {
-        return OFFER_OF_CHOICE;
+        return """
+                = Виберіть необхідну дію.
+                Введіть цифру та натисніть Enter: =""";
     }
 
     public abstract void executingMenuItem1();

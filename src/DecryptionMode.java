@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class DecryptionMethod extends AbstractActionSelectionMenu {
+public class DecryptionMode extends AbstractActionSelectionMenu {
 
     ArrayList<Character> decryptionFile;
 
