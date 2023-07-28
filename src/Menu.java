@@ -1,27 +1,25 @@
 import java.util.ArrayList;
 
 public class Menu {
-    ArrayList<Character> arrayListSourceFile;
-    ArrayList<Character> arrayListSourceEncryptFile;
+    ArrayList<Character> SourceFile;
+    ArrayList<Character> SourceEncryptFile;
     static ArrayList<Character> decryptionFile;
     static ArrayList<Character> decryptionFileForWrite;
     int yourShiftKey;
-    int operationSelect;
 
     public void starting() {
-        // Вибір операції - шифрування або розшифрування
         ChoiceOfOperation choiceOfOperation = new ChoiceOfOperation();
         choiceOfOperation.operationSelection();
     }
 
     public void encryptRun() {
         ReadFile readFile = new ReadFile();
-        arrayListSourceFile = readFile.readFileToChar();
+        SourceFile = readFile.readFileToChar();
 
         KeySelection keySelection = new KeySelection();
         yourShiftKey = keySelection.selectKey();
 
-        EncryptionProcess encryptionProcess = new EncryptionProcess(arrayListSourceFile, yourShiftKey);
+        EncryptionProcess encryptionProcess = new EncryptionProcess(SourceFile, yourShiftKey);
 
         ArrayList<Character> arrayListEncryptFile;
         arrayListEncryptFile = encryptionProcess.encrypt1();
@@ -31,15 +29,14 @@ public class Menu {
 
         EndMenu endMenu = new EndMenu();
         endMenu.operationSelection();
-
     }
 
     public void decryptRun() {
         ReadFile readFileDecrypt = new ReadFile();
-        arrayListSourceEncryptFile = readFileDecrypt.readFileToChar();
+        SourceEncryptFile = readFileDecrypt.readFileToChar();
 
         DecryptionProcess decryptionProcess = new DecryptionProcess();
-        decryptionProcess.setArrayListEncryptFile(arrayListSourceEncryptFile);
+        decryptionProcess.setArrayListEncryptFile(SourceEncryptFile);
 
         DecryptionMethod decryptionMethod = new DecryptionMethod();
         decryptionMethod.operationSelection();
