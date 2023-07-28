@@ -17,13 +17,13 @@ public abstract class AbstractActionSelectionMenu {
         return OFFER_OF_CHOICE;
     }
 
-    public abstract void ExecutingMenuItem1();
+    public abstract void executingMenuItem1();
 
-    public abstract void ExecutingMenuItem2();
+    public abstract void executingMenuItem2();
 
-    public abstract void ExecutingMenuItem3();
+    public abstract void executingMenuItem3();
 
-    public abstract void ExecutingMenuItem4();
+    public abstract void executingMenuItem4();
 
     public void operationSelection() {
         System.out.println(getOfferOfChoice());
@@ -37,10 +37,10 @@ public abstract class AbstractActionSelectionMenu {
 
     public void positionSelection() {
         switch (select) {
-            case MENU_ITEM_POSITION_1 -> ExecutingMenuItem1();
-            case MENU_ITEM_POSITION_2 -> ExecutingMenuItem2();
-            case MENU_ITEM_POSITION_3 -> ExecutingMenuItem3();
-            case MENU_ITEM_POSITION_4 -> ExecutingMenuItem4();
+            case MENU_ITEM_POSITION_1 -> executingMenuItem1();
+            case MENU_ITEM_POSITION_2 -> executingMenuItem2();
+            case MENU_ITEM_POSITION_3 -> executingMenuItem3();
+            case MENU_ITEM_POSITION_4 -> executingMenuItem4();
             default -> {
                 System.out.println(ERROR_CHOICE);
                 operationSelection();
