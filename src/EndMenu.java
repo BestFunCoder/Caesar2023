@@ -1,13 +1,11 @@
 public final class EndMenu extends AbstractActionSelectionMenu {
 
-    public final String MENU_ITEMS = """
-            1 - Вихід в головне меню.
-            2 - Вихід з програми.
-            """;
-
     @Override
     public String getMenuItems() {
-        return MENU_ITEMS;
+        return """
+                1 - Вихід в головне меню.
+                2 - Вихід з програми.
+                """;
     }
 
     @Override
